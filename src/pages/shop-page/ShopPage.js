@@ -1,43 +1,27 @@
-import React, { Component } from "react";
-
-import SHOP_DATA from "./ShopData";
-import CollectionPreview from "../../components/collection-preview/CollectionPreview";
-
-class ShopPage extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      collections: SHOP_DATA,
-    };
-  }
-  render() {
-    const { collections } = this.state;
-    return (
-      <div className="shop-page">
-        {collections.map(({ id, ...otherCollectionsProps }) => (
-          <CollectionPreview key={id} {...otherCollectionsProps} />
-        ))}
-      </div>
-    );
-  }
-}
-export default ShopPage;
-
-/* import React, { Component } from "react";
+import React from "react";
 import { Route } from "react-router-dom";
 
-import CollectionsOverview from "../../components/CollectionsOverview";
-import CollectionPage from "../CollectionPage";
+import CollectionsOverview from "../../components/collections-overview/CollectionsOverview";
+
+import CollectionPage from "../collection-page/CollectionPage";
 
 const ShopPage = ({ match }) => {
-  console.log(match);
+  console.log("ShopPage - component ", match);
+  console.log(match.path);
   return (
     <div className="shop-page">
+      {/* {collections.map(({ id, ...otherCollectionsProps }) => (
+        <CollectionPreview key={id} {...otherCollectionsProps} />
+      ))} -- moved to own component CollectionsOverview*/}
       <Route exact path={`${match.path}`} component={CollectionsOverview} />
       <Route path={`${match.path}/:collectionId`} component={CollectionPage} />
+      {/* <Route path={`${match.path}/:collectionId`} component={CollectionPage} /> */}
     </div>
   );
 };
+/* const mapStateToProps = createStructuredSelector({
+  collections: selectCollections,
+}); */
+
 export default ShopPage;
- */
+//export default connect(mapStateToProps)(ShopPage);

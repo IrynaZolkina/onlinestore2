@@ -1,0 +1,233 @@
+/****************   Navigation   ****************/
+
+/**** container for main menu ***************/
+.container1 {
+  /*background: rgba(163, 216, 209);*/
+  background: white;
+  width: 100%;
+  margin: 0 auto;
+  position: absolute;
+
+  font-family: "Forum", sans-serif;
+}
+nav ul {
+  text-align: center;
+  /* width: 60px;*/
+}
+
+nav ul li {
+  display: inline-block;
+
+  /* border-color: rgba(47, 175, 96, 0.8);
+  color: rgba(96, 47, 175, 0.8);
+  background-color: rgba(175, 162, 47, 0.8); */
+}
+/* .act a {
+  background-color: royalblue;
+} */
+nav a {
+  color: black;
+  text-decoration: none;
+  display: block;
+  padding: 0.7em 0.75em;
+}
+
+.menu-main-link:hover {
+  font-weight: bold;
+  /*cursor: url("./paw.png"), auto;*/
+}
+.menu-main-link .hover-border {
+  font-size: 12px;
+}
+.menu-main-link .active-l {
+  font-weight: bold;
+}
+
+nav li:hover {
+  /*background: rgba(163, 216, 209);*/
+  background: white;
+  /*border-bottom: 0.1rem solid black;*/
+  /*cursor: url("./paw.png"), auto;*/
+}
+
+nav li:hover a {
+  color: black;
+  /*cursor: url("./paw.png"), auto;*/
+}
+
+nav li:hover a::after {
+  left: 0%;
+  width: 100%;
+  content: "";
+  background: rgba(0, 0, 0, 0.8);
+}
+
+/* .container1 {
+  position: relative;
+} */
+
+/* shadow screen **************/
+/*
+.menu-main:hover::before {
+  content: "";
+  position: fixed;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+}
+*/
+.menu-main {
+  border-bottom: 1px solid rgba(163, 216, 209);
+  /* border-bottom: 1px solid rgba(0, 0, 0, 0.5); */
+  /* background: rgba(163, 216, 209); */
+  background: white;
+  width: 85%;
+  margin: 0 auto;
+  border-color: black;
+}
+
+.submenu-container2 .menu-sub {
+  position: absolute;
+  left: 0;
+  /*background: rgba(163, 216, 209);*/
+  background: white;
+  width: 100%;
+  margin: 1px auto;
+
+  display: none;
+  color: #ddd;
+  /*padding: 2em;*/
+  /*border: none;*/
+  font-weight: normal;
+  z-index: 3;
+  box-shadow: 0 320px 0px rgba(0, 0, 0, 0.4);
+  /*box-shadow: 0 0 250px 100 rgba(0, 0, 0, 0.9);*/
+  padding-bottom: 25px;
+  padding-top: 25px;
+  padding-left: 5%;
+  padding-right: 5%;
+  font-size: 0.9rem;
+  line-height: 1.4rem;
+}
+
+.img-menu-bd {
+  width: 70%;
+  height: 100%;
+}
+.img-menu-1-col {
+  width: 100%;
+  height: 100%;
+  margin-left: 1%;
+}
+.img-menu-4-col {
+  width: 60%;
+  height: 100%;
+  margin-right: 2%;
+  margin-top: 25%;
+}
+nav li:hover .menu-sub {
+  display: block;
+
+  /*border-top: 1px solid rgba(0, 0, 0, 0.5);*/
+  z-index: 3;
+}
+
+.menu-sub li {
+  display: block;
+  text-align: left;
+  margin-left: 1%;
+  line-height: 0.8rem;
+  padding-top: 1%;
+  padding-bottom: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 1.1rem;
+}
+.menu-sub .text-sub-sub-menu a {
+  color: rgb(41, 41, 179);
+  text-align: left;
+  margin-left: 20%;
+  line-height: 0.7rem;
+  font-size: 0.8rem;
+}
+.menu-sub a {
+  padding: 0;
+  margin-bottom: 0.2em;
+}
+
+.menu-sub a:hover {
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* .menu-sub a:visited {
+  background-color: rgba(180, 212, 92, 0.952);
+}
+ */
+.menu-category {
+  margin: 2.5em 0 0.5em;
+}
+
+.menu-category:first-of-type {
+  margin-top: 0;
+}
+
+.menu-col-1,
+.menu-col-2,
+.menu-col-3,
+.menu-col-4 {
+  float: left;
+}
+
+.menu-col-1 {
+  width: 26%;
+}
+
+.menu-col-2 {
+  width: 16%;
+}
+.menu-col-3 {
+  width: 16%;
+}
+/* 
+.text-center {
+  text-align: center;
+  margin-top: 1%;
+} */
+.hover-border {
+  font-size: 1rem;
+  text-decoration: none;
+  position: relative;
+}
+
+.hover-border::after {
+  content: "";
+  width: 0%;
+  height: 4%;
+  /*background: rgba(175, 47, 47, 0.8);*/
+  position: absolute;
+  bottom: 0%;
+  left: 50%;
+
+  transition: all 500ms ease;
+}
+
+.hover-border:hover::after {
+  left: 0%;
+  width: 100%;
+  background-color: black;
+}
+
+.title-category a {
+  color: rgba(119, 15, 110, 0.952);
+  font-size: 0.8rem;
+  font-weight: bold;
+  /*padding-bottom: 10px;*/
+  padding-top: 10px;
+  letter-spacing: 0.2rem;
+}
+.menu-sub .title-category a:hover {
+  color: blue;
+}

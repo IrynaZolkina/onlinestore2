@@ -1,0 +1,11 @@
+.date {
+  text-align: center;
+
+  font-family: "Open Sans Condensed";
+  letter-spacing: 2px;
+  font-weight: 500;
+  font-size: 1.1rem;
+  margin-top: 30px;
+  padding-top: 20px;
+  padding-bottom: 15px;
+}
