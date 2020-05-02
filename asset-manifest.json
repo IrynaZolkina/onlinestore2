@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/kapriz-zhytomyr/static/css/main.f7efa894.chunk.css",
+    "main.js": "/kapriz-zhytomyr/static/js/main.c77d3442.chunk.js",
+    "main.js.map": "/kapriz-zhytomyr/static/js/main.c77d3442.chunk.js.map",
+    "runtime-main.js": "/kapriz-zhytomyr/static/js/runtime-main.67d3e931.js",
+    "runtime-main.js.map": "/kapriz-zhytomyr/static/js/runtime-main.67d3e931.js.map",
+    "static/js/2.000b2387.chunk.js": "/kapriz-zhytomyr/static/js/2.000b2387.chunk.js",
+    "static/js/2.000b2387.chunk.js.map": "/kapriz-zhytomyr/static/js/2.000b2387.chunk.js.map",
+    "index.html": "/kapriz-zhytomyr/index.html",
+    "precache-manifest.cb46f9ae9e8a7ed76467da15c1c7abda.js": "/kapriz-zhytomyr/precache-manifest.cb46f9ae9e8a7ed76467da15c1c7abda.js",
+    "service-worker.js": "/kapriz-zhytomyr/service-worker.js",
+    "static/css/main.f7efa894.chunk.css.map": "/kapriz-zhytomyr/static/css/main.f7efa894.chunk.css.map",
+    "static/js/2.000b2387.chunk.js.LICENSE.txt": "/kapriz-zhytomyr/static/js/2.000b2387.chunk.js.LICENSE.txt",
+    "static/media/crown.ed28accb.svg": "/kapriz-zhytomyr/static/media/crown.ed28accb.svg",
+    "static/media/shopping-bag.30f07071.svg": "/kapriz-zhytomyr/static/media/shopping-bag.30f07071.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.67d3e931.js",
+    "static/js/2.000b2387.chunk.js",
+    "static/css/main.f7efa894.chunk.css",
+    "static/js/main.c77d3442.chunk.js"
+  ]
+}
