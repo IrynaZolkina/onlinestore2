@@ -34,7 +34,7 @@ class Submenu extends Component {
                     if (element.search("#") === 0) {
                       return (
                         <div className="title-category" key={index}>
-                          <NavLink to={"/:123"}>
+                          <NavLink to={"/shop/:123"}>
                             {element.slice(1).toUpperCase()}
                           </NavLink>
                         </div>
@@ -61,7 +61,7 @@ class Submenu extends Component {
                           if (element.substring(0, 1) === "-") {
                             return (
                               <div className="text-sub-sub-menu" key={index}>
-                                <NavLink to={"/:123"}>{element}</NavLink>
+                                <NavLink to={"/shop/:123"}>{element}</NavLink>
                               </div>
                             );
                           } else {
@@ -123,10 +123,10 @@ class Submenu extends Component {
               </ul>
             </div>
             {/* /************ THIRD COLUMN************  */}
-            <div className="menu-col-1">
+            <div className="menu-col-3">
               <ul className="">
                 {navbarSubMenu.map((element, index) => {
-                  if ((index >= 45) & (index < 65)) {
+                  if ((index >= 45) & (index < 70)) {
                     if (element.search("#") === 0) {
                       return (
                         <div className="title-category" key={index}>
@@ -171,10 +171,10 @@ class Submenu extends Component {
               </ul>
             </div>
             {/* /************ FORTH COLUMN************  */}
-            <div className="menu-col-2">
+            <div className="menu-col-4">
               <ul className="">
                 {navbarSubMenu.map((element, index) => {
-                  if ((index >= 65) & (index < 95)) {
+                  if ((index >= 70) & (index < 95)) {
                     if (element.search("#") === 0) {
                       return (
                         <div className="title-category" key={index}>
@@ -219,7 +219,7 @@ class Submenu extends Component {
               </ul>
             </div>
             {/* /************ 5-TH COLUMN************  */}
-            <div className="menu-col-2">
+            <div className="menu-col-5">
               <ul className="">
                 {navbarSubMenu.map((element, index) => {
                   if ((index >= 95) & (index < 140)) {

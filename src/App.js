@@ -16,6 +16,8 @@ import { setCurrentUser } from "./redux/user/userActions";
 import { selectCurrentUser } from "./redux/user/userSelector";
 import CheckOutPage from "./pages/checkout-page/CheckOutPage";
 import ColPage1Image from "./pages/pages-collections/ColPage1Image";
+import NewProduct from "./pages/new-product-page/NewProduct";
+import Forum from "./pages/forum-page/Forum";
 
 /* const HatsPage = () => (
   <div>
@@ -77,7 +79,9 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/shop" component={ShopPage} />
-          <Route path="/:td" component={ColPage1Image} />
+          <Route exact path="/new" component={NewProduct} />
+          <Route exact path="/forum" component={Forum} />
+          <Route path="/shop/:td" component={ColPage1Image} />
 
           <Route exact path="/checkout" component={CheckOutPage} />
           <Route
