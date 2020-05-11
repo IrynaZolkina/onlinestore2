@@ -34,13 +34,13 @@ const Header = ({ currentUser, hidden }) => {
           <Link className="option" to="/shop">
             SHOP
           </Link>
+          <Link className="option" to="/all">
+            ALL
+          </Link>
           <Link className="option" to="/forum">
             FORUM
           </Link>
 
-          <Link className="option" to="/contact">
-            CONTACT
-          </Link>
           {currentUser && currentUser.email === "1234@hotmail.com" && (
             <Link className="option" to="/new">
               Create New Product

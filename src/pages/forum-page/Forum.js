@@ -46,6 +46,8 @@ class Forum extends Component {
     this.unsubscribe = firestore.collection("posts").onSnapshot((snapshop) => {
       const posts = snapshop.docs.map(collectIdsAndDocs);
       this.setState({ posts });
+      console.log(posts, "-----posts");
+      console.log({ posts }, "-----posts");
     });
     /*********
      const snapshot = await firestore.collection("posts").get();
@@ -77,12 +79,12 @@ class Forum extends Component {
   };
 
   handleRemove = async (id) => {
-    //const allPosts = this.state.posts;
+    const allPosts = this.state.posts;
 
     firestore.doc(`posts/${id}`).delete();
 
-    //await firestore.doc(`posts/${id}`).delete();
-    //const posts = allPosts.filter((post) => post.id !== id);
+    await firestore.doc(`posts/${id}`).delete();
+    const posts = allPosts.filter((post) => post.id !== id);
 
     //this.setState({ posts });
   };

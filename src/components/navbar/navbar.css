@@ -14,7 +14,9 @@ nav ul {
   text-align: center;
   /* width: 60px;*/
 }
-
+nav ul.menu-main {
+  padding: 0;
+}
 nav ul li {
   display: inline-block;
 
@@ -117,9 +119,9 @@ ul.menu-main {
   /*z-index: 3;*/
   /*border: none;*/
   font-weight: normal;
-  box-shadow: 0 320px 0px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 300px 0px rgba(0, 0, 0, 0.4);
   /*box-shadow: 0 0 250px 100 rgba(0, 0, 0, 0.9);*/
-  padding-bottom: 25px;
+  padding-bottom: 0.7%;
   padding-top: 25px;
   padding-left: 3%;
   padding-right: 3%;
@@ -152,7 +154,7 @@ nav li:hover .menu-sub {
 
 .menu-sub li {
   display: block;
-  text-align: left;
+  text-align: center;
 
   line-height: 0.8rem;
   padding-top: 1%;
@@ -164,7 +166,7 @@ nav li:hover .menu-sub {
 .menu-sub .text-sub-sub-menu a {
   color: rgb(41, 41, 179);
   text-align: left;
-  margin-left: 5%;
+  margin-left: 1%;
   line-height: 0.7rem;
   font-size: 0.8rem;
 }
@@ -250,8 +252,8 @@ nav li:hover .menu-sub {
   background-color: black;
 }
 
-.title-category a {
-  color: rgba(119, 15, 110, 0.952);
+.menu-sub .title-category a {
+  color: rgba(129, 14, 14, 0.952);
   font-size: 0.8rem;
   font-weight: bold;
   /*padding-bottom: 10px;*/

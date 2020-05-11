@@ -18,6 +18,7 @@ import CheckOutPage from "./pages/checkout-page/CheckOutPage";
 import ColPage1Image from "./pages/pages-collections/ColPage1Image";
 import NewProduct from "./pages/new-product-page/NewProduct";
 import Forum from "./pages/forum-page/Forum";
+import All from "./pages/new-product-page/All";
 
 /* const HatsPage = () => (
   <div>
@@ -35,6 +36,7 @@ class App extends Component {
     });
   } */
   componentDidMount() {
+    console.log("componentDidMount-object");
     const { setCurrentUser } = this.props;
 
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
@@ -68,6 +70,7 @@ class App extends Component {
     });
   }
   componentWillUnmount() {
+    console.log("componentWillUnmount()");
     this.unsubscribeFromAuth();
   }
 
@@ -80,6 +83,7 @@ class App extends Component {
           <Route exact path="/" component={HomePage} />
           <Route exact path="/shop" component={ShopPage} />
           <Route exact path="/new" component={NewProduct} />
+          <Route exact path="/all" component={All} />
           <Route exact path="/forum" component={Forum} />
           <Route path="/shop/:td" component={ColPage1Image} />
 

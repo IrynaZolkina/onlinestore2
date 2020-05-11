@@ -3,6 +3,7 @@
 import React, { Component } from "react";
 import { NavLink, withRouter } from "react-router-dom";
 import "./submenu.css";
+import SubmenuElement from "./SubmenuElement";
 
 class Submenu extends Component {
   constructor() {
@@ -12,14 +13,61 @@ class Submenu extends Component {
     };
   }
   render() {
+    //const navbarSubMenu = this.props.navbarSubMenu.map((el) => el.title);
     const navbarSubMenu = this.props.navbarSubMenu;
+
+    //console.log(navbarSubMenu, "navbarSubMenu");
+    const { submenuItemsInColumn } = this.props;
+    //console.log(order, "order");
+    let title1 = [];
+    let title2 = [];
+    let title3 = [];
+    let title4 = [];
+    let title5 = [];
+    let title6 = [];
+
+    navbarSubMenu.forEach((element, index) => {
+      if (index < submenuItemsInColumn.first) {
+        title1 = [...title1, element];
+      } else {
+        if (
+          (index >= submenuItemsInColumn.first) &
+          (index < submenuItemsInColumn.second)
+        ) {
+          title2 = [...title2, element];
+        } else {
+          if (
+            (index >= submenuItemsInColumn.second) &
+            (index < submenuItemsInColumn.third)
+          ) {
+            title3 = [...title3, element];
+          } else {
+            if (
+              (index >= submenuItemsInColumn.third) &
+              (index < submenuItemsInColumn.forth)
+            ) {
+              title4 = [...title4, element];
+            } else {
+              if (
+                (index >= submenuItemsInColumn.forth) &
+                (index < submenuItemsInColumn.fifth)
+              ) {
+                title5 = [...title5, element];
+              } else {
+                if (index < submenuItemsInColumn.sixth) {
+                  title6 = [...title6, element];
+                }
+              }
+            }
+          }
+        }
+      }
+    });
+
     if (this.state.clearSubmenu === true) {
       return (
         <div className="test47">
           <div className="submenu-container2">
-            {/* <a className="hover-border" href="">
-                {this.props.title}
-              </a> */}
             <div
               className="menu-sub"
               onClick={() => {
@@ -29,303 +77,52 @@ class Submenu extends Component {
             >
               {/* /************ FIRST COLUMN************  */}
               <div className="menu-col-1">
-                <ul className="">
-                  {navbarSubMenu.map((element, index) => {
-                    if (index < 15) {
-                      if (element.search("#") === 0) {
-                        return (
-                          <div className="title-category" key={index}>
-                            <NavLink to={"/shop/:123"}>
-                              {element.slice(1).toUpperCase()}
-                            </NavLink>
-                          </div>
-                        );
-                      } else {
-                        if (element.search("https") === 0) {
-                          return (
-                            <div className="" key={index}>
-                              <img
-                                src={element}
-                                className="img-menu-1-col"
-                                alt="Poccccc"
-                              />
-                            </div>
-                          );
-                        } else {
-                          if (element.substring(0, 1) === ".") {
-                            return (
-                              <li className="text-submenu" key={index}>
-                                <NavLink to={"/:123"}>
-                                  {element.slice(1)}
-                                </NavLink>
-                              </li>
-                            );
-                          } else {
-                            if (element.substring(0, 1) === "-") {
-                              return (
-                                <div className="text-sub-sub-menu" key={index}>
-                                  <NavLink to={"/shop/:123"}>{element}</NavLink>
-                                </div>
-                              );
-                            } else {
-                              return null;
-                            }
-                          }
-                        }
-                      }
-                    }
-                  })}
-                </ul>
+                {title1.map((element, index) => (
+                  <ul key={index} className="">
+                    <SubmenuElement element={element} index={index} />
+                  </ul>
+                ))}
               </div>
+
               {/* /************ SECOND COLUMN************  */}
               <div className="menu-col-2">
-                <ul className="">
-                  {navbarSubMenu.map((element, index) => {
-                    if ((index >= 15) & (index < 40)) {
-                      if (element.search("#") === 0) {
-                        return (
-                          <div className="title-category" key={index}>
-                            <NavLink to={"/:123"}>
-                              {element.slice(1).toUpperCase()}
-                            </NavLink>
-                          </div>
-                        );
-                      } else {
-                        if (element.search("https") === 0) {
-                          return (
-                            <div className="" key={index}>
-                              <img
-                                src={element}
-                                className="img-menu-1-col"
-                                alt="Poccccc"
-                              />
-                            </div>
-                          );
-                        } else {
-                          if (element.substring(0, 1) === ".") {
-                            return (
-                              <li className="text-submenu" key={index}>
-                                <NavLink to={"/:123"}>
-                                  {element.slice(1)}
-                                </NavLink>
-                              </li>
-                            );
-                          } else {
-                            if (element.substring(0, 1) === "-") {
-                              return (
-                                <div className="text-sub-sub-menu" key={index}>
-                                  <NavLink to={"/:123"}>{element}</NavLink>
-                                </div>
-                              );
-                            } else {
-                              return null;
-                            }
-                          }
-                        }
-                      }
-                    }
-                  })}
-                </ul>
+                {title2.map((element, index) => (
+                  <ul key={index} className="">
+                    <SubmenuElement element={element} index={index} />
+                  </ul>
+                ))}
               </div>
-              {/* /************ THIRD COLUMN************  */}
+              {/************ THIRD COLUMN************/}
               <div className="menu-col-3">
-                <ul className="">
-                  {navbarSubMenu.map((element, index) => {
-                    if ((index >= 40) & (index < 65)) {
-                      if (element.search("#") === 0) {
-                        return (
-                          <div className="title-category" key={index}>
-                            <NavLink to={"/:123"}>
-                              {element.slice(1).toUpperCase()}
-                            </NavLink>
-                          </div>
-                        );
-                      } else {
-                        if (element.search("https") === 0) {
-                          return (
-                            <div className="" key={index}>
-                              <img
-                                src={element}
-                                className="img-menu-1-col"
-                                alt="Poccccc"
-                              />
-                            </div>
-                          );
-                        } else {
-                          if (element.substring(0, 1) === ".") {
-                            return (
-                              <li className="text-submenu" key={index}>
-                                <NavLink to={"/:123"}>
-                                  {element.slice(1)}
-                                </NavLink>
-                              </li>
-                            );
-                          } else {
-                            if (element.substring(0, 1) === "-") {
-                              return (
-                                <div className="text-sub-sub-menu" key={index}>
-                                  <NavLink to={"/:123"}>{element}</NavLink>
-                                </div>
-                              );
-                            } else {
-                              return null;
-                            }
-                          }
-                        }
-                      }
-                    }
-                  })}
-                </ul>
+                {title3.map((element, index) => (
+                  <ul key={index} className="">
+                    <SubmenuElement element={element} index={index} />
+                  </ul>
+                ))}
               </div>
               {/* /************ FORTH COLUMN************  */}
               <div className="menu-col-4">
-                <ul className="">
-                  {navbarSubMenu.map((element, index) => {
-                    if ((index >= 65) & (index < 95)) {
-                      if (element.search("#") === 0) {
-                        return (
-                          <div className="title-category" key={index}>
-                            <NavLink to={"/:123"}>
-                              {element.slice(1).toUpperCase()}
-                            </NavLink>
-                          </div>
-                        );
-                      } else {
-                        if (element.search("https") === 0) {
-                          return (
-                            <div className="" key={index}>
-                              <img
-                                src={element}
-                                className="img-menu-1-col"
-                                alt="Poccccc"
-                              />
-                            </div>
-                          );
-                        } else {
-                          if (element.substring(0, 1) === ".") {
-                            return (
-                              <li className="text-submenu" key={index}>
-                                <NavLink to={"/:123"}>
-                                  {element.slice(1)}
-                                </NavLink>
-                              </li>
-                            );
-                          } else {
-                            if (element.substring(0, 1) === "-") {
-                              return (
-                                <div className="text-sub-sub-menu" key={index}>
-                                  <NavLink to={"/:123"}>{element}</NavLink>
-                                </div>
-                              );
-                            } else {
-                              return null;
-                            }
-                          }
-                        }
-                      }
-                    }
-                  })}
-                </ul>
+                {title4.map((element, index) => (
+                  <ul key={index} className="">
+                    <SubmenuElement element={element} index={index} />
+                  </ul>
+                ))}
               </div>
               {/* /************ 5-TH COLUMN************  */}
               <div className="menu-col-5">
-                <ul className="">
-                  {navbarSubMenu.map((element, index) => {
-                    if ((index >= 95) & (index < 125)) {
-                      if (element.search("#") === 0) {
-                        return (
-                          <div className="title-category" key={index}>
-                            <NavLink to={"/:123"}>
-                              {element.slice(1).toUpperCase()}
-                            </NavLink>
-                          </div>
-                        );
-                      } else {
-                        if (element.search("https") === 0) {
-                          return (
-                            <div className="" key={index}>
-                              <img
-                                src={element}
-                                className="img-menu-1-col"
-                                alt="Poccccc"
-                              />
-                            </div>
-                          );
-                        } else {
-                          if (element.substring(0, 1) === ".") {
-                            return (
-                              <li className="text-submenu" key={index}>
-                                <NavLink to={"/:123"}>
-                                  {element.slice(1)}
-                                </NavLink>
-                              </li>
-                            );
-                          } else {
-                            if (element.substring(0, 1) === "-") {
-                              return (
-                                <div className="text-sub-sub-menu" key={index}>
-                                  <NavLink to={"/:123"}>{element}</NavLink>
-                                </div>
-                              );
-                            } else {
-                              return null;
-                            }
-                          }
-                        }
-                      }
-                    }
-                  })}
-                </ul>
+                {title5.map((element, index) => (
+                  <ul key={index} className="">
+                    <SubmenuElement element={element} index={index} />
+                  </ul>
+                ))}
               </div>
               {/* /************ 6-TH COLUMN************  */}
-              <div className="menu-col-5">
-                <ul className="">
-                  {navbarSubMenu.map((element, index) => {
-                    if ((index >= 125) & (index < 150)) {
-                      if (element.search("#") === 0) {
-                        return (
-                          <div className="title-category" key={index}>
-                            <NavLink to={"/:123"}>
-                              {element.slice(1).toUpperCase()}
-                            </NavLink>
-                          </div>
-                        );
-                      } else {
-                        if (element.search("https") === 0) {
-                          return (
-                            <div className="" key={index}>
-                              <img
-                                src={element}
-                                className="img-menu-1-col"
-                                alt="Poccccc"
-                              />
-                            </div>
-                          );
-                        } else {
-                          if (element.substring(0, 1) === ".") {
-                            return (
-                              <li className="text-submenu" key={index}>
-                                <NavLink to={"/:123"}>
-                                  {element.slice(1)}
-                                </NavLink>
-                              </li>
-                            );
-                          } else {
-                            if (element.substring(0, 1) === "-") {
-                              return (
-                                <div className="text-sub-sub-menu" key={index}>
-                                  <NavLink to={"/:123"}>{element}</NavLink>
-                                </div>
-                              );
-                            } else {
-                              return null;
-                            }
-                          }
-                        }
-                      }
-                    }
-                  })}
-                </ul>
+              <div className="menu-col-6">
+                {title6.map((element, index) => (
+                  <ul key={index} className="">
+                    <SubmenuElement element={element} index={index} />
+                  </ul>
+                ))}
               </div>
             </div>
           </div>

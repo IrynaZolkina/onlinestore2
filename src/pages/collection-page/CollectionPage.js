@@ -9,7 +9,7 @@ import CollectionItem from "../../components/collection-item/CollectionItem";
 import { Link } from "react-router-dom";
 
 const CollectionPage = ({ collection }) => {
-  console.log(collection);
+  console.log("this is CollectionPage");
   const { title, items } = collection;
   return (
     <div className="collection-page">

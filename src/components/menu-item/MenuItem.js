@@ -3,15 +3,15 @@ import "./menuitem.css";
 import { withRouter } from "react-router-dom";
 
 const MenuItem = ({ title, imageUrl, size, history, linkUrl, match }) => {
-  console.log(match, "kkkkkkkkkkkk");
-  console.log(linkUrl, "llkkkkkkkkkkkk");
+  //console.log(match, "kkkkkkkkkkkk");
+  //console.log(linkUrl, "llkkkkkkkkkkkk");
   return (
     <div
       className={`${size} menu-item`}
-      onClick={() => (
-        console.log("object,", `${match.url}${linkUrl}`),
+      onClick={() =>
+        //console.log("object,", `${match.url}${linkUrl}`),
         history.push(`${match.url}${linkUrl}`)
-      )}
+      }
     >
       <div
         className="background-image"

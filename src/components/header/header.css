@@ -24,18 +24,21 @@
   padding-left: 10px;
   margin-left: 20px;
 }
+.header .main-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
 .header .main-title a {
   font-size: 4rem;
   /*font-family: "Montserrat Alternates", sans-serif;*/
   font-family: "Lora", serif;
   font-weight: bolder;
   letter-spacing: 3.1vw;
+
   color: rgb(170, 87, 170);
   text-shadow: 4px 4px 4px rgb(85, 11, 119);
   /*margin-left: 25%;*/
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
 }
 .header a {
   text-decoration: none;
