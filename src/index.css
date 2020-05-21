@@ -1,13 +1,49 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/*************** Collection Page *********************/
+.collection-page {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 60px;
 }
+.collection-page .title-collection-page {
+  font-size: 38px;
+  margin: 0 auto 30px;
+}
+.collection-page .collection-container {
+  width: 95%;
+  margin: 0 auto;
+}
+
+.grid-item {
+  display: grid;
+  height: 60vh;
+  grid-template-rows: 7fr 0.5fr 0.5fr 0.5fr 1.5fr;
+}
+/* .grid-item {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 60vh;
+  align-items: center;
+  position: relative;
+}*/
+/* .grid-item .image-container {
+  height: 45vh;
+} */
+.grid-item .grid-image {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 5px;
+}
+
+/********************** Product Page ******************/

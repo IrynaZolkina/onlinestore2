@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { firestore } from "../../firebase/FirebaseUtils";
+import { firestore } from "../firebase/FirebaseUtils";
 
-class AddPost extends Component {
-  state = { title: "", content: "" };
+class TaddPost extends Component {
+  state = { title: "kkkk", content: "" };
 
   handleChange = (event) => {
     const { name, value } = event.target;
@@ -12,11 +12,10 @@ class AddPost extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
 
-    //const { onCreate } = this.props;
     const { title, content } = this.state;
 
     const post = {
-      /* id: Date.now().toString(), */
+      /*  id: Date.now().toString(), */
       title,
       content,
       user: {
@@ -59,4 +58,4 @@ class AddPost extends Component {
   }
 }
 
-export default AddPost;
+export default TaddPost;

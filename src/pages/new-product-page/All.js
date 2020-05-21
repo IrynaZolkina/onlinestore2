@@ -9,14 +9,16 @@ class All extends Component {
   unsubscribe = null;
 
   componentDidMount = async () => {
+    const colid = this.props.match.params.colid;
+    //console.log(colid, "this.props.match.params.colid");
     this.unsubscribe = firestore
-      .collection("items")
+      .collection(colid)
       .orderBy("createdAt", "desc")
       .onSnapshot((snapshop) => {
         const items = snapshop.docs.map(collectIdsAndDocs);
         this.setState({ items });
-        console.log(items, "-----items");
-        console.log({ items }, "-----items");
+        //console.log(items, "-----items");
+        //console.log({ items }, "-----items");
       });
   };
   componentWillUnmount = () => {

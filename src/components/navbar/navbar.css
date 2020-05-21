@@ -81,7 +81,7 @@ nav li:hover a::after {
 }
 */
 ul.menu-main {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.9);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.7);
 }
 
 .menu-main {
@@ -103,15 +103,19 @@ ul.menu-main {
 .submenu-container2:hover {
   display: block;
 } */
+
+/* .test47 {
+  position: sticky;
+} */
 .submenu-container2 .menu-sub {
   position: absolute;
+  margin-top: 1px;
   left: 0;
 
   /*background: rgba(163, 216, 209);*/
   width: 100%;
 
   height: auto;
-  background: white;
   /*margin: 1px auto;*/
   display: none;
   /*color: #ddd;/*/
@@ -119,7 +123,7 @@ ul.menu-main {
   /*z-index: 3;*/
   /*border: none;*/
   font-weight: normal;
-  box-shadow: 0 300px 0px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 100px 0px rgba(0, 0, 0, 0.4);
   /*box-shadow: 0 0 250px 100 rgba(0, 0, 0, 0.9);*/
   padding-bottom: 0.7%;
   padding-top: 25px;
@@ -127,8 +131,20 @@ ul.menu-main {
   padding-right: 3%;
   font-size: 0.9rem;
   line-height: 1.4rem;
-}
 
+  background: white;
+}
+/* .submenu-container2 .ttt {
+  position: absolute;
+  content: "";
+  background-color: rgba(0, 0, 0, 0.4);
+  left: 0;
+  
+  height: 20vh;
+  width: 100%;
+
+  display: none;
+}  */
 .img-menu-bd {
   width: 70%;
   height: 100%;
@@ -147,9 +163,15 @@ ul.menu-main {
 }
 nav li:hover .menu-sub {
   display: block;
-
-  /*border-top: 1px solid rgba(0, 0, 0, 0.5);*/
   z-index: 3;
+}
+/* nav li:hover .ttt {
+  display: block;
+  z-index: 3;
+} */
+.menu-sub .text-submenu a {
+  /*color: green;*/
+  text-align: left;
 }
 
 .menu-sub li {
@@ -166,7 +188,7 @@ nav li:hover .menu-sub {
 .menu-sub .text-sub-sub-menu a {
   color: rgb(41, 41, 179);
   text-align: left;
-  margin-left: 1%;
+  margin-left: 2%;
   line-height: 0.7rem;
   font-size: 0.8rem;
 }

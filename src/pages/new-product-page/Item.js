@@ -1,5 +1,8 @@
 import React from "react";
 import { firestore } from "../../firebase/FirebaseUtils";
+import Edit from "../SingleItemPage";
+import { NavLink, withRouter } from "react-router-dom";
+import Product from "./Product";
 
 //import moment from "moment";
 
@@ -18,20 +21,36 @@ const Item = ({
   stars,
   comments,
 }) => {
-  //console.log(title, content, user, createdAt, stars, comments);
-  const itemRef = firestore.doc(`items/${id}`);
+  /* console.log(
+    "Item-component++++++++++++++",
+    id,
+    title,
+    content,
+    user,
+    createdAt,
+    stars,
+    comments
+  ); */
+
+  /* const id1 = item.id;
+  console.log("Item-component+++++ PROPS ", props);
+  console.log("Item-component+++++ ITEM ", item);*/
+  //console.log("Item-component+++++ ID ", id);
+  const itemRef = firestore.collection("items").doc(id);
   const remove = () => itemRef.delete();
+
   return (
-    <div className="">
+    <div className="grid-box">
       <div className="grid-item">
         <img
-          className="image"
+          className="grid-image"
           style={{
             backgroundImage: `url(${imageUrl1})`,
           }}
           alt=""
         />
 
+        <h1>{id}</h1>
         <h3>{title}</h3>
         <div>{brand}</div>
 
@@ -57,6 +76,10 @@ const Item = ({
             <button className="delete" onClick={remove}>
               Delete
             </button>
+            {/* <button onClick={() => <Product id={id} />}>EDIT</button> */}
+            <NavLink className="" to={`/testpage/${id}`}>
+              EDIT
+            </NavLink>
           </div>
         </div>
       </div>
@@ -64,4 +87,4 @@ const Item = ({
   );
 };
 
-export default Item;
+export default withRouter(Item);

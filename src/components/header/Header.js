@@ -34,7 +34,10 @@ const Header = ({ currentUser, hidden }) => {
           <Link className="option" to="/shop">
             SHOP
           </Link>
-          <Link className="option" to="/all">
+          <Link className="option" to="/managenavbar">
+            Utility
+          </Link>
+          <Link className="option" to="/all/items">
             ALL
           </Link>
           <Link className="option" to="/forum">
@@ -43,7 +46,7 @@ const Header = ({ currentUser, hidden }) => {
 
           {currentUser && currentUser.email === "1234@hotmail.com" && (
             <Link className="option" to="/new">
-              Create New Product
+              New Product
             </Link>
           )}
           {currentUser ? (

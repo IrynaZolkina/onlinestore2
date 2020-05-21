@@ -2,14 +2,17 @@ import React from "react";
 /*import Post from "./Post";*/
 import AddItem from "./AddItem";
 import Item from "./Item";
+import { withRouter } from "react-router-dom";
 
 const Items = ({ items }) => {
+  //console.log("items-------------", items);
   return (
     <div>
       <div className="">
         <h1>post</h1>
         <div className="collection-grid-container">
           {items.map((item) => (
+            //console.log("item************", item),
             <Item {...item} key={item.id} />
           ))}
           {/*  <AddItem /> */}
@@ -18,4 +21,4 @@ const Items = ({ items }) => {
     </div>
   );
 };
-export default Items;
+export default withRouter(Items);

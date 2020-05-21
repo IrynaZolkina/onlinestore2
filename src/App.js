@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 
 import "./App.css";
+import "./index.css";
 
 import Navbar from "./components/navbar/Navbar";
 import HomePage from "./pages/homepage/HomePage";
@@ -15,10 +16,17 @@ import { auth, createUserProfileDocument } from "./firebase/FirebaseUtils";
 import { setCurrentUser } from "./redux/user/userActions";
 import { selectCurrentUser } from "./redux/user/userSelector";
 import CheckOutPage from "./pages/checkout-page/CheckOutPage";
-import ColPage1Image from "./pages/pages-collections/ColPage1Image";
+
 import NewProduct from "./pages/new-product-page/NewProduct";
 import Forum from "./pages/forum-page/Forum";
 import All from "./pages/new-product-page/All";
+import CollectionPage from "./collections/CollectionPage";
+import CollectionList from "./collections/CollectionList";
+import SingleItemPage from "./pages/SingleItemPage";
+import EditItem from "./pages/EditItem";
+import TestPage from "./pages/TestPage";
+import Tapplication from "./test/Tapplication";
+import ManageNavbar from "./components/navbar/ManageNavbar";
 
 /* const HatsPage = () => (
   <div>
@@ -82,11 +90,17 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/shop" component={ShopPage} />
+          <Route exact path="/managenavbar" component={ManageNavbar} />
           <Route exact path="/new" component={NewProduct} />
-          <Route exact path="/all" component={All} />
+          <Route exact path="/all/:colid" component={All} />
           <Route exact path="/forum" component={Forum} />
-          <Route path="/shop/:td" component={ColPage1Image} />
+          <Route exact path="/item/:itemId" component={SingleItemPage} />
+          <Route exact path="/edit/:id" component={EditItem} />
+          <Route exact path="/testpage/:id" component={TestPage} />
+          {/***********   <Route exact path="/testpage/:id" component={Tapplication} /> ********/}
 
+          <Route path="/shop/col/:tt" component={CollectionList} />
+          <Route path="/shop/:collectionId" component={CollectionPage} />
           <Route exact path="/checkout" component={CheckOutPage} />
           <Route
             exact

@@ -1,18 +1,16 @@
 import React from "react";
-import { firestore } from "../../firebase/FirebaseUtils";
+import { firestore } from "../firebase/FirebaseUtils";
 
-//import moment from "moment";
-
-const Post = ({ id, title, content, user, createdAt, stars, comments }) => {
-  console.log(title, content, user, createdAt, stars, comments);
+const TPost = ({ id, title, content, user, createdAt, stars, comments }) => {
   const postRef = firestore.doc(`posts/${id}`);
   const remove = () => postRef.delete();
-  console.log("xxxxxxxxxxxxxxxxxxxxxxxx");
+
   return (
     <article className="Post">
       <div className="Post--content">
         <h3>{title}</h3>
         <div>{content}</div>
+        <div>{id}</div>
       </div>
       <div className="Post--meta">
         <div>
@@ -40,4 +38,4 @@ const Post = ({ id, title, content, user, createdAt, stars, comments }) => {
   );
 };
 
-export default Post;
+export default TPost;

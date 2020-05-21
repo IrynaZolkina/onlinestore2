@@ -1,14 +1,18 @@
 .collection-grid-container {
-  width: 85%;
-  margin: 0 auto;
+  /* width: 85%;
+  margin: 0 auto; */
   display: grid;
   grid-template-columns: repeat(4, 24%);
   grid-auto-rows: 60vh;
   justify-content: space-between;
   grid-row-gap: 2%;
 }
-
-.grid-item {
+.collection-page .items {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 10px;
+}
+/* .grid-item {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -21,4 +25,4 @@
   background-size: cover;
   background-position: center;
   margin-bottom: 5px;
-}
+} */

@@ -1,6 +1,7 @@
 import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
+import "firebase/storage";
 
 const config = {
   apiKey: "AIzaSyC_W3ZW4MOhN3GurxjEBoXjUd5TCkNXtRc",
@@ -41,6 +42,7 @@ firebase.initializeApp(config);
 
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
+export const storage = firebase.storage();
 
 /* added by tutor 
 firestore.settings({ timestampsInSnapshots: true }); */
