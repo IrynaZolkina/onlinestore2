@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import "./product.css";
+
 import { firestore } from "../../firebase/FirebaseUtils";
 import EditFields from "../EditFields";
 import { storage } from "../../firebase/FirebaseUtils";
@@ -15,7 +17,8 @@ class Product extends Component {
     price: "",
     discountPrice: "",
     brand: "",
-
+    shortDescription: "",
+    description: "",
     collectionsArray: [],
     imageUrl1: "",
     imageUrl2: "",
@@ -35,6 +38,7 @@ class Product extends Component {
   unsubscribe = null;
 
   componentDidMount = async () => {
+    console.log("pProduct component");
     firestore
       .collection("navbarTest")
       .orderBy("order", "desc")
@@ -156,6 +160,8 @@ class Product extends Component {
       price,
       discountPrice,
       brand,
+      description,
+      shortDescription,
       collectionsArray,
       imageUrl1,
       imageUrl2,
@@ -217,6 +223,12 @@ class Product extends Component {
           arrayNavbar={arrayNavbar}
           changeShowMenu={this.changeShowMenu}
           showMenu={this.state.showMenu}
+          title={title}
+          brand={brand}
+          price={price}
+          discountPrice={discountPrice}
+          imageUrl1={imageUrl1}
+          imageUrl2={imageUrl2}
         />
         <span>First Image</span>
         <input

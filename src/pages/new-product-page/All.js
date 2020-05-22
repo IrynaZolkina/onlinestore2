@@ -11,15 +11,16 @@ class All extends Component {
   componentDidMount = async () => {
     const colid = this.props.match.params.colid;
     //console.log(colid, "this.props.match.params.colid");
-    this.unsubscribe = firestore
-      .collection(colid)
-      .orderBy("createdAt", "desc")
-      .onSnapshot((snapshop) => {
-        const items = snapshop.docs.map(collectIdsAndDocs);
-        this.setState({ items });
-        //console.log(items, "-----items");
-        //console.log({ items }, "-----items");
-      });
+    colid &&
+      (this.unsubscribe = firestore
+        .collection(colid)
+        .orderBy("createdAt", "desc")
+        .onSnapshot((snapshop) => {
+          const items = snapshop.docs.map(collectIdsAndDocs);
+          this.setState({ items });
+          //console.log(items, "-----items");
+          //console.log({ items }, "-----items");
+        }));
   };
   componentWillUnmount = () => {
     this.unsubscribe();
@@ -30,7 +31,7 @@ class All extends Component {
 
     return (
       <main className="">
-        <h1>Think Piece</h1>
+        <h1>Collection - {this.props.match.params.colid}</h1>
         <Items items={items} />
       </main>
     );

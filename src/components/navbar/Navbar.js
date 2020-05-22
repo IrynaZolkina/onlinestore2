@@ -1785,7 +1785,6 @@ class Navbar extends Component {
   /*  last
       code: "000206",
       number: "04010511",*/
-
   /*
   componentDidMount() {
     const { navbarMenuTest } = this.state;
@@ -1798,6 +1797,7 @@ class Navbar extends Component {
     });
   }
 */
+
   //const navbarFBaseRef = firestore.collection("navbarTest").get();
   //navbarFBaseRef.map((element) => console.log(element.data()));
   //}

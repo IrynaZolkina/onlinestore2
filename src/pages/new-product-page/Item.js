@@ -40,48 +40,42 @@ const Item = ({
   const remove = () => itemRef.delete();
 
   return (
-    <div className="grid-box">
-      <div className="grid-item">
-        <img
-          className="grid-image"
+    <div className="item-container">
+      <div
+        className="item-image"
+        style={{
+          backgroundImage: `url(${imageUrl1})`,
+        }}
+        alt=""
+      />
+      <div className="test-c">
+        <div
+          className="item-image-2"
           style={{
-            backgroundImage: `url(${imageUrl1})`,
+            backgroundImage: `url(${imageUrl2})`,
           }}
           alt=""
         />
+        <div className="item-footer">
+          <button className="">Star</button>
+          <button className="" onClick={remove}>
+            Delete
+          </button>
 
-        <h1>{id}</h1>
-        <h3>{title}</h3>
-        <div>{brand}</div>
-
-        <div>{price}</div>
-
-        <div className="Post--meta">
-          <div>
-            <p>
-              <span role="img" aria-label="star">
-                ⭐️
-              </span>
-              {stars}
-            </p>
-            <p>
-              <span role="img" aria-label="comments">
-                🙊
-              </span>
-              {comments}
-            </p>
-          </div>
-          <div>
-            <button className="star">Star</button>
-            <button className="delete" onClick={remove}>
-              Delete
-            </button>
-            {/* <button onClick={() => <Product id={id} />}>EDIT</button> */}
-            <NavLink className="" to={`/testpage/${id}`}>
-              EDIT
-            </NavLink>
-          </div>
+          <NavLink className="" to={`/testpage/${id}`}>
+            EDIT
+          </NavLink>
         </div>
+      </div>
+
+      <div className="item-footer">
+        <span>{brand}</span>
+        <span>{price}</span>
+      </div>
+      <div className="item-footer">
+        <span>{title}</span>
+
+        <span>{discountPrice}</span>
       </div>
     </div>
   );
