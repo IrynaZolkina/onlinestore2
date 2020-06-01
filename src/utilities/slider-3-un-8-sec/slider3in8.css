@@ -2,6 +2,7 @@
   background-color: gainsboro;
   /*height: 90%;*/
   width: 100%;
+
   position: relative;
   /*z-index: -5;*/
 }
@@ -34,7 +35,14 @@
   left: 0;
   overflow: hidden;
 }
-
+.title-slider-8 {
+  text-align: center;
+  font-family: "Open Sans Condensed";
+  letter-spacing: 2px;
+  font-weight: bold;
+  font-size: 2.5rem;
+  margin-bottom: 3%;
+}
 /****************   Slider-show   *****************/
 .radio-2 {
   margin-top: 20%;

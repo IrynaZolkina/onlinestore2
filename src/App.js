@@ -17,15 +17,15 @@ import { setCurrentUser } from "./redux/user/userActions";
 import { selectCurrentUser } from "./redux/user/userSelector";
 import CheckOutPage from "./pages/checkout-page/CheckOutPage";
 
-import NewProduct from "./pages/new-product-page/NewProduct";
+import NewProduct from "./components/product/NewProduct";
 import Forum from "./pages/forum-page/Forum";
-import All from "./pages/new-product-page/All";
+import All from "./components/product/All";
 import CollectionPage from "./collections/CollectionPage";
 import CollectionList from "./collections/CollectionList";
 import SingleItemPage from "./pages/SingleItemPage";
 import EditItem from "./pages/EditItem";
-import TestPage from "./pages/TestPage";
-import Tapplication from "./test/Tapplication";
+import TestPage from "./components/product/TestPage";
+//import Tapplication from "./test/Tapplication";
 import ManageNavbar from "./components/navbar/ManageNavbar";
 
 /* const HatsPage = () => (
@@ -44,7 +44,7 @@ class App extends Component {
     });
   } */
   componentDidMount() {
-    console.log("componentDidMount-object");
+    //console.log("componentDidMount-object");
     const { setCurrentUser } = this.props;
 
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {

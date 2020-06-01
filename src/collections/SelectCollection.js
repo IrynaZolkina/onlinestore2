@@ -8,109 +8,152 @@ class SelectCollection extends Component {
     navbarChosen: false,
     navbarOrder: "",
     submenu: [],
+    navbarNameChosen: "",
   };
-
+  /************* by substring number, creating list of collection's codes */
   addItemIntoCollections = (code1, number) => {
     const { collectionsArray } = this.props.collectionsArray;
 
-    //console.log(collectionsArray, "this.props.collectionsArray");
-    //console.log(this.props.arrayNavbar, "navbar");
     let arrayForAdding = [];
+    let submenuElementMatched = [];
 
-    /******** number in navbar   ***** */
-
-    //console.log("numberInNavbar---", numberInNavbar);
-
-    /******** arrayNavbar element in which order==numberInNavbar 
-               - it's an array with 1 element(object)  *****/
     const chosenNavbarElementArray = this.props.arrayNavbar.filter(
-      (doc) => doc.order == number.substring(0, 2)
+      (doc) => doc.number === number.substring(0, 2) + "000000"
     );
-    //console.log("chosenNavbarElementArray---", chosenNavbarElementArray);
+    if (chosenNavbarElementArray) {
+      //console.log("chosenNavbarElementArray---", chosenNavbarElementArray);
 
-    /******** getting this object from array **********/
-    const [chosenNavbarElementObject] = chosenNavbarElementArray;
-    /* console.log(
-      "chosenNavbarElementObject--",
-      chosenNavbarElementObject,
-      chosenNavbarElementArray
-    ); */
+      /******** getting this object from array **********/
+      const [chosenNavbarElementObject] = chosenNavbarElementArray;
 
-    /******** getting code of the navbar collection with number 'numberInNavbar'*/
-    const codeNavbarCollection = chosenNavbarElementObject.code;
-    !collectionsArray.includes(codeNavbarCollection) &&
-      (arrayForAdding = [...arrayForAdding, codeNavbarCollection]);
-    //console.log("codeNavbarCollection---", codeNavbarCollection);
-    //console.log("arrayForAdding---", arrayForAdding);
+      console.log("chosenNavbarElementArray", chosenNavbarElementArray);
 
-    /******** getting subMenu array */
-    const submenuArray = chosenNavbarElementObject.subMenu;
-    //console.log("submenuArray---", submenuArray);
+      /******** getting code of the navbar collection with number 'numberInNavbar'*/
+      const codeNavbarCollection = chosenNavbarElementObject.code;
+      !collectionsArray.includes(codeNavbarCollection) &&
+        (arrayForAdding = [...arrayForAdding, codeNavbarCollection]);
 
-    /******** number in submenu - 2-nd level  ***** */
+      console.log("codeNavbarCollection---", codeNavbarCollection);
+      console.log("arrayForAdding---", arrayForAdding);
 
-    //console.log("numberSubmenu2Level----", numberSubmenu2Level);
+      /******** getting subMenu array */
+      const submenuArray = chosenNavbarElementObject.subMenu;
+      //console.log("submenuArray---", submenuArray);
 
-    /******** submenu 2 level element - array with 1 element(object)  *****/
-    const submenuArrayElement = submenuArray.filter(
-      (doc) => doc.number == number.substring(0, 4) + "0000"
-    );
-    //console.log("submenuArrayElement-----", submenuArrayElement);
-
-    /******** getting this object from array  *****/
-    const [submenuArrayObject] = submenuArrayElement;
-    /* console.log(submenuArrayObject, "***number2level***", submenuArrayElement); */
-
-    /********* getting code  */
-    const codeSubmenu2Level = submenuArrayObject.code;
-    !collectionsArray.includes(codeSubmenu2Level) &&
-      (arrayForAdding = [...arrayForAdding, codeSubmenu2Level]);
-    //console.log("arrayForAdding---", arrayForAdding);
-    //console.log(number.substring(4, 6), "********");
-
-    /******** number in submenu - 3-nd level  ***** */
-
-    if (number.substring(4, 6) !== "00") {
-      const submenuArrayElement3Level = submenuArray.filter(
-        (doc) => doc.number == number.substring(0, 6) + "00"
+      submenuElementMatched = submenuArray.filter(
+        (submenuElement) =>
+          submenuElement.number === number.substring(0, 4) + "0000"
       );
 
-      const [submenuArrayObject3Level] = submenuArrayElement3Level;
+      if (submenuElementMatched.length !== 0) {
+        // 1-st level group exists
+        console.log("submenuElementMatched-----", submenuElementMatched);
 
-      const codeSubmenu3Level = submenuArrayObject3Level.code;
-      !collectionsArray.includes(codeSubmenu3Level) &&
-        (arrayForAdding = [...arrayForAdding, codeSubmenu3Level]);
-    }
-    if (number.substring(6, 8) !== "00") {
-      !collectionsArray.includes(code1) &&
-        (arrayForAdding = [...arrayForAdding, code1]);
-    }
+        /******** getting this object from array  *****/
+        const [submenuArrayObject] = submenuElementMatched;
+        console.log(
+          submenuArrayObject,
+          "***number2level***",
+          submenuElementMatched
+        );
 
-    arrayForAdding.map((code) => {
-      //console.log(code, "codefffffffffffff");
-      firestore
-        .collection(code)
-        .doc(this.props.id)
-        .set({
-          title: this.props.title,
-          brand: this.props.brand,
-          price: this.props.price,
-          discountPrice: this.props.discountPrice,
-          imageUrl1: this.props.imageUrl1,
-          imageUrl2: this.props.imageUrl2,
-        });
-    });
-    arrayForAdding = [...collectionsArray, ...arrayForAdding];
-    //console.log("arrayForAdding---", arrayForAdding);
-    firestore
-      .collection("items")
-      .doc(this.props.id)
-      .set(
-        {
-          collectionsArray: [...arrayForAdding],
-        },
-        { merge: true }
-      );
+        /********* getting code  */
+        const codeSubmenu2Level = submenuArrayObject.code;
+        !collectionsArray.includes(codeSubmenu2Level) &&
+          (arrayForAdding = [...arrayForAdding, codeSubmenu2Level]);
+        //console.log("arrayForAdding---", arrayForAdding);
+        //console.log(number.substring(4, 6), "********");
+
+        /******** number in submenu - 3-nd level  ***** */
+
+        if (number.substring(4, 6) !== "00") {
+          const submenuArrayElement3Level = submenuArray.filter(
+            (doc) => doc.number === number.substring(0, 6) + "00"
+          );
+
+          const [submenuArrayObject3Level] = submenuArrayElement3Level;
+
+          const codeSubmenu3Level = submenuArrayObject3Level.code;
+          !collectionsArray.includes(codeSubmenu3Level) &&
+            (arrayForAdding = [...arrayForAdding, codeSubmenu3Level]);
+        }
+        if (number.substring(6, 8) !== "00") {
+          !collectionsArray.includes(code1) &&
+            (arrayForAdding = [...arrayForAdding, code1]);
+        }
+
+        arrayForAdding.map((code) =>
+          //console.log(code, "codefffffffffffff");
+          firestore.collection(code).doc(this.props.id).set({
+            title: this.props.title,
+            titleCode: this.props.titleCode,
+            //brand: this.props.brand,
+            price: this.props.price,
+            discountPrice: this.props.discountPrice,
+            imageUrl1: this.props.imageUrl1,
+            imageUrl2: this.props.imageUrl2,
+            createdAt: this.props.createdAt,
+            novinka: this.props.novinka,
+          })
+        );
+        arrayForAdding = [...collectionsArray, ...arrayForAdding];
+        //console.log("arrayForAdding---", arrayForAdding);
+        firestore
+          .collection("items")
+          .doc(this.props.id)
+          .set(
+            {
+              collectionsArray: [...arrayForAdding],
+            },
+            { merge: true }
+          );
+      } else {
+        console.log("Number is wrong on 2-nd level /submenu-up/", number);
+        submenuElementMatched = submenuArray.filter(
+          (submenuElement) =>
+            submenuElement.number === number.substring(0, 6) + "00"
+        );
+        if (submenuElementMatched.length !== 0) {
+          const [submenuArrayObject33Level] = submenuElementMatched;
+
+          const codeSubmenu33Level = submenuArrayObject33Level.code;
+          !collectionsArray.includes(codeSubmenu33Level) &&
+            (arrayForAdding = [...arrayForAdding, codeSubmenu33Level]);
+        }
+        if (number.substring(6, 8) !== "00") {
+          !collectionsArray.includes(code1) &&
+            (arrayForAdding = [...arrayForAdding, code1]);
+        }
+
+        arrayForAdding.map((code) =>
+          //console.log(code, "codefffffffffffff");
+          firestore.collection(code).doc(this.props.id).set({
+            title: this.props.title,
+            titleCode: this.props.titleCode,
+            //brand: this.props.brand,
+            price: this.props.price,
+            discountPrice: this.props.discountPrice,
+            imageUrl1: this.props.imageUrl1,
+            imageUrl2: this.props.imageUrl2,
+            createdAt: this.props.createdAt,
+            novinka: this.props.novinka,
+          })
+        );
+        arrayForAdding = [...collectionsArray, ...arrayForAdding];
+        //console.log("arrayForAdding---", arrayForAdding);
+        firestore
+          .collection("items")
+          .doc(this.props.id)
+          .set(
+            {
+              collectionsArray: [...arrayForAdding],
+            },
+            { merge: true }
+          );
+      }
+    } else {
+      console.log("Number is wrong on Navbar level", number);
+    }
   };
   render() {
     return (
@@ -122,21 +165,29 @@ class SelectCollection extends Component {
               this.setState(
                 { navbarChosen: true },
                 this.setState({
-                  navbarOrder: element.order,
+                  //navbarOrder: element.order,
+                  navbarNameChosen: element.title.toUpperCase(),
                   submenu: element.subMenu,
                 })
               )
             }
           >
-            <div>{element.title}</div>
+            <div className="collection-navbar-element">
+              {element.title.toUpperCase()}
+            </div>
           </h4>
         ))}
         {this.state.navbarChosen === true && (
-          <SelectSubmenu
-            submenu={this.state.submenu}
-            changeShowMenu={this.props.changeShowMenu}
-            addItemIntoCollections={this.addItemIntoCollections}
-          />
+          <div className="collection-submenu-wrapper">
+            <div className="collection-submenu-title">
+              {this.state.navbarNameChosen}
+            </div>
+            <SelectSubmenu
+              submenu={this.state.submenu}
+              changeShowMenu={this.props.changeShowMenu}
+              addItemIntoCollections={this.addItemIntoCollections}
+            />
+          </div>
         )}
       </div>
     );

@@ -10,20 +10,20 @@ $main-color: black;*/
 
 .group {
   position: relative;
-  margin: 45px 0;
+  margin: 0;
 }
 .group .form-input {
   background: none;
   background-color: white;
   color: grey; /*** sub-color ********/
   font-size: 18px;
-  padding: 10px 10px 10px 5px;
-  display: block;
-  width: 100%;
+  padding: 0.1px 0.1px 0.1px 0.1px;
+  /* display: block; 
+  width: 100%;*/
   border: none;
   border-radius: 0;
   border-bottom: 1px solid grey; /*** sub-color ********/
-  margin: 25px 0;
+  margin: 0.1px 0 0 0;
 }
 .group .form-input:focus {
   outline: none;
@@ -47,7 +47,7 @@ $main-color: black;*/
   position: absolute;
   pointer-events: none;
   left: 5px;
-  top: 10px;
+  top: 5px;
   transition: 300ms ease all;
 }
 .group .form-input-label.shrink {

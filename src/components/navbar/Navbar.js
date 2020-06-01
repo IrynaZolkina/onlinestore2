@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
 import Submenu from "./Submenu";
 import firebase, { firestore } from "../../firebase/FirebaseUtils";
 
@@ -9,11 +9,13 @@ class Navbar extends Component {
   constructor() {
     super();
     this.state = {
-      //clearSubmenu: true,
+      showSubmenu: true,
       navbarMenuTest: [
+        //********* */  "подарунки",
         {
           title: "парфуми",
           order: "01",
+          number: "01000000",
           submenuItemsInColumn: {
             first: "15",
             second: "50",
@@ -30,150 +32,180 @@ class Navbar extends Component {
             { title: "-нишевi", number: "00000000" },
           ],
         },
+        //********* */  "макияж"
         {
           title: "макияж",
           order: "02",
+          code: "000208",
+          number: "02000000",
           submenuItemsInColumn: {
-            first: "18",
-            second: "38",
-            third: "50",
-            forth: "67",
-            fifth: "84",
-            sixth: "99",
+            first: "17",
+            second: "37",
+            third: "49",
+            forth: "66",
+            fifth: "83",
+            sixth: "98",
           },
 
           subMenu: [
+            { title: "#БРОВИ", code: "000210", number: "02010000" },
             {
-              title:
-                "https://firebasestorage.googleapis.com/v0/b/justclockit-a0fa1.appspot.com/o/kapris%2Fnavbar%2Fmakeupmakeup1.jpg?alt=media&token=66c02249-c53e-41f8-a952-f16693a1031a",
-              number: "000000",
+              title: ".Фарбування брів і вій",
+              code: "000211",
+              number: "02010100",
             },
-            { title: "#БРОВИ", number: "000000" },
-            { title: ".Фарбування брів і вій", number: "00000000" },
-            { title: "-Фарби для брів і вій", number: "00000000" },
-            { title: "-Хна для брів і вій", number: "00000000" },
-            { title: "-Окисники", number: "00000000" },
-            { title: "-Спеціальні засоби", number: "00000000" },
-            { title: ".Макіяж брів", number: "00000000" },
-            { title: "-Віск", number: "00000000" },
-            { title: "-Гель", number: "00000000" },
-            { title: "-Туш", number: "00000000" },
-            { title: "-Тіні", number: "00000000" },
-            { title: "-Пудра", number: "00000000" },
-            { title: "-Олівці", number: "00000000" },
-            { title: "-Маркери", number: "00000000" },
-            { title: ".Тінти", number: "00000000" },
-            { title: ".Сироватки для росту брів і вій", number: "00000000" },
-            { title: ".Пінцети", number: "00000000" },
-            { title: "#ОБЛИЧЧЯ", number: "00000000" },
-            { title: ".Бази/основи/праймери", number: "00000000" },
-            { title: ".Тональні креми", number: "00000000" },
-            { title: "-Зволожуючі", number: "00000000" },
-            { title: "-Матуючі", number: "00000000" },
-            { title: "-ВВ креми", number: "00000000" },
-            { title: "-СС креми", number: "00000000" },
-            { title: ".Тональні основи", number: "00000000" },
-            { title: ".Корекція недоліків", number: "00000000" },
-            { title: "-Консилери", number: "00000000" },
-            { title: "-Коректори", number: "00000000" },
-            { title: ".Контурінг", number: "00000000" },
-            { title: "-Хайлайтери", number: "00000000" },
-            { title: "-Скульптори", number: "00000000" },
-            { title: "-Бронзери", number: "00000000" },
-            { title: "-Рум'яна", number: "00000000" },
-            { title: "-Палетки", number: "00000000" },
+            {
+              title: "-Фарби для брів і вій",
+              code: "000212",
+              number: "02010101",
+            },
+            {
+              title: "-Хна для брів і вій",
+              code: "000213",
+              number: "02010102",
+            },
+            { title: "-Окисники", code: "000214", number: "02010103" },
+            { title: "-Спеціальні засоби", code: "000215", number: "02010104" },
+            { title: ".Макіяж брів", code: "000216", number: "02010200" },
+            { title: "-Віск", code: "000217", number: "02010201" },
+            { title: "-Гель", code: "000218", number: "02010202" },
+            { title: "-Туш", code: "000219", number: "02010203" },
+            { title: "-Тіні", code: "000220", number: "02010204" },
+            { title: "-Пудра", code: "000221", number: "02010205" },
+            { title: "-Олівці", code: "000222", number: "02010206" },
+            { title: "-Маркери", code: "000223", number: "02010207" },
+            { title: ".Тінти", code: "000224", number: "02010300" },
+            {
+              title: ".Сироватки для росту брів і вій",
+              code: "000225",
+              number: "02010400",
+            },
+            { title: ".Пінцети", code: "000226", number: "02010500" },
+            { title: "#ОБЛИЧЧЯ", code: "000227", number: "02020000" },
+            {
+              title: ".Бази/основи/праймери",
+              code: "000228",
+              number: "02020100",
+            },
+            { title: ".Тональні креми", code: "000229", number: "02020200" },
+            { title: "-Зволожуючі", code: "000230", number: "02020201" },
+            { title: "-Матуючі", code: "000231", number: "02020202" },
+            { title: "-ВВ креми", code: "000232", number: "02020203" },
+            { title: "-СС креми", code: "000233", number: "02020204" },
+            { title: ".Тональні основи", code: "000234", number: "02020300" },
+            {
+              title: ".Корекція недоліків",
+              code: "000235",
+              number: "02020400",
+            },
+            { title: "-Консилери", code: "000236", number: "02020401" },
+            { title: "-Коректори", code: "000237", number: "02020402" },
+            { title: ".Контурінг", code: "000238", number: "02020500" },
+            { title: "-Хайлайтери", code: "000239", number: "02020501" },
+            { title: "-Скульптори", code: "000240", number: "02020502" },
+            { title: "-Бронзери", code: "000241", number: "02020503" },
+            { title: "-Рум'яна", code: "000242", number: "02020504" },
+            { title: "-Палетки", code: "000243", number: "02020505" },
 
-            { title: ".Пудри", number: "00000000" },
-            { title: ".Фіксатори макіяжу", number: "00000000" },
-            { title: ".Палетки", number: "00000000" },
+            { title: ".Пудри", code: "000244", number: "02020600" },
+            { title: ".Фіксатори макіяжу", code: "000245", number: "02020700" },
+            { title: ".Палетки", code: "000246", number: "02020800" },
 
-            { title: "#ГУБИ", number: "00000000" },
-            { title: ".Губна помада", number: "00000000" },
-            { title: "-Глянцеві помади", number: "00000000" },
-            { title: "-Матові помади", number: "00000000" },
-            { title: "-Помади з блиском", number: "00000000" },
-            { title: ".Блиски для губ", number: "00000000" },
-            { title: ".Бальзами для губ", number: "00000000" },
-            { title: ".Олівці контурні для губ", number: "00000000" },
-            { title: "-Дерев'яні", number: "00000000" },
-            { title: "-Автоматичні", number: "00000000" },
-            { title: ".Палетки", number: "00000000" },
+            { title: "#ГУБИ", code: "000247", number: "02030000" },
+            { title: ".Губна помада", code: "000248", number: "02030100" },
+            { title: "-Глянцеві помади", code: "000249", number: "02030101" },
+            { title: "-Матові помади", code: "000250", number: "02030102" },
+            { title: "-Помади з блиском", code: "000251", number: "02030103" },
+            { title: ".Блиски для губ", code: "000252", number: "02030200" },
+            { title: ".Бальзами для губ", code: "000253", number: "02030300" },
+            {
+              title: ".Олівці контурні для губ",
+              code: "000254",
+              number: "02030400",
+            },
+            { title: "-Дерев'яні", code: "000255", number: "02030401" },
+            { title: "-Автоматичні", code: "000256", number: "02030402" },
+            { title: ".Палетки", code: "000257", number: "02030500" },
             {
               title:
                 "https://firebasestorage.googleapis.com/v0/b/justclockit-a0fa1.appspot.com/o/kapris%2Fnavbar%2Fmakeupmakeup2.jpg?alt=media&token=c117ff15-e225-450e-b578-6b2c2b95eaa7",
               number: "99999996",
             },
-            { title: "#ОЧІ", number: "00000000" },
-            { title: ".Для вій", number: "00000000" },
-            { title: "-Основа під туш", number: "00000000" },
-            { title: "-Туш для вій", number: "00000000" },
+            { title: "#ОЧІ", code: "000258", number: "02040000" },
+            { title: ".Для вій", code: "000259", number: "02040100" },
+            { title: "-Основа під туш", code: "000260", number: "02040101" },
+            { title: "-Туш для вій", code: "000261", number: "02040102" },
             {
               title: "-Сироватки для росту і укріплення вій",
-              number: "00000000",
+              code: "000262",
+              number: "02040103",
             },
-            { title: ".Для повік", number: "00000000" },
-            { title: "-Олівці контурні", number: "00000000" },
-            { title: "-Підводки", number: "00000000" },
-            { title: "-База для тіней", number: "00000000" },
-            { title: "-Тіні для повік", number: "00000000" },
-            { title: "-иалетки з тінями", number: "00000000" },
+            { title: ".Для повік", code: "000263", number: "02040200" },
+            { title: "-Олівці контурні", code: "000264", number: "02040201" },
+            { title: "-Підводки", code: "000265", number: "02040202" },
+            { title: "-База для тіней", code: "000266", number: "02040203" },
+            { title: "-Тіні для повік", code: "000267", number: "02040204" },
+            { title: "-палетки з тінями", code: "000268", number: "02040205" },
 
-            { title: ".Накладні вії", number: "00000000" },
-            { title: "-Пучкові вії", number: "00000000" },
-            { title: "-Комплекти вій", number: "00000000" },
-            { title: "-Клей для вій", number: "00000000" },
-            { title: "-Ремувер", number: "00000000" },
-            { title: "-Пінцети", number: "00000000" },
+            { title: ".Накладні вії", code: "000269", number: "02040300" },
+            { title: "-Пучкові вії", code: "000270", number: "02040301" },
+            { title: "-Комплекти вій", code: "000271", number: "02040302" },
+            { title: "-Клей для вій", code: "000272", number: "02040303" },
+            { title: "-Ремувер", code: "000273", number: "02040304" },
+            { title: "-Пінцети", code: "000274", number: "02040305" },
 
-            { title: "#АКСЕСУАРИ", number: "00000000" },
-            { title: ".Аплікатори", number: "00000000" },
-            { title: ".Пензлики", number: "00000000" },
-            { title: "-Для тіней", number: "00000000" },
-            { title: "-Для брів", number: "00000000" },
-            { title: "-Для вій", number: "00000000" },
-            { title: "-Для підводки", number: "00000000" },
-            { title: "-Для тональних основ", number: "00000000" },
-            { title: "-Для контурінгу", number: "00000000" },
-            { title: "-Для рідких скульпторів", number: "00000000" },
-            { title: "-Для пудри", number: "00000000" },
-            { title: "-Для рум'ян", number: "00000000" },
-            { title: "-Для губ", number: "00000000" },
-            { title: ".Спонжі", number: "00000000" },
-            { title: ".Пуховки для пудри", number: "00000000" },
-            { title: ".Набори пензлів", number: "00000000" },
-            { title: ".Пінцети", number: "00000000" },
+            { title: "#АКСЕСУАРИ", code: "000275", number: "02050000" },
+            { title: ".Аплікатори", code: "000276", number: "02050100" },
+            { title: ".Пензлики", code: "000277", number: "02050200" },
+            { title: "-Для тіней", code: "000278", number: "02050201" },
+            { title: "-Для брів", code: "000279", number: "02050202" },
+            { title: "-Для вій", code: "000280", number: "02050203" },
+            { title: "-Для підводки", code: "000281", number: "02050204" },
+            {
+              title: "-Для тональних основ",
+              code: "000282",
+              number: "02050205",
+            },
+            { title: "-Для контурінгу", code: "000283", number: "02050206" },
+            {
+              title: "-Для рідких скульпторів",
+              code: "000284",
+              number: "02050207",
+            },
+            { title: "-Для пудри", code: "000285", number: "02050208" },
+            { title: "-Для рум'ян", code: "000286", number: "02050209" },
+            { title: "-Для губ", code: "000287", number: "02050210" },
+            { title: ".Спонжі", code: "000288", number: "02050300" },
+            { title: ".Пуховки для пудри", code: "000289", number: "02050400" },
+            { title: ".Набори пензлів", code: "000290", number: "02050500" },
+            { title: ".Пінцети", code: "000291", number: "02050600" },
             {
               title:
-                "https://firebasestorage.googleapis.com/v0/b/justclockit-a0fa1.appspot.com/o/kapris%2Fnavbar%2Fmakeupmakeup3.jpg?alt=media&token=1b2f4523-7a5d-4f5e-8b93-4a7ecf25b37e",
-              number: "99999997",
+                "https://firebasestorage.googleapis.com/v0/b/justclockit-a0fa1.appspot.com/o/kapris%2Fnavbar%2Fmakeupmakeup1.jpg?alt=media&token=66c02249-c53e-41f8-a952-f16693a1031a",
+              number: "99999994",
             },
-            { title: "#ЗНЯТТЯ МАКІЯЖУ", number: "00000000" },
-            { title: ".Міцелярні води", number: "00000000" },
-            { title: ".Демакіяжи", number: "00000000" },
-            { title: ".Спонжі для демакіяжу", number: "00000000" },
-            { title: ".Серветки для демакіяжу", number: "00000000" },
-            { title: "", number: "00000000" },
-            { title: "", number: "00000000" },
-            { title: "", number: "00000000" },
-            { title: "", number: "00000000" },
-            { title: "", number: "00000000" },
-            { title: "", number: "00000000" },
-            { title: "", number: "00000000" },
-            { title: "", number: "00000000" },
-            { title: "", number: "00000000" },
-            { title: "", number: "00000000" },
-            { title: "", number: "00000000" },
-            { title: "", number: "00000000" },
-            { title: "", number: "00000000" },
-            { title: "", number: "00000000" },
-            { title: "", number: "00000000" },
-            { title: "", number: "00000000" },
+            { title: "#ЗНЯТТЯ МАКІЯЖУ", code: "000292", number: "02060000" },
+            { title: ".Міцелярні води", code: "000293", number: "02060100" },
+            { title: ".Демакіяжи", code: "000294", number: "02060200" },
+            {
+              title: ".Спонжі для демакіяжу",
+              code: "000295",
+              number: "02060300",
+            },
+            {
+              title: ".Серветки для демакіяжу",
+              code: "000296",
+              number: "02060400",
+            },
           ],
         },
+        //********* */  "волосся"
         {
           title: "волосся",
           order: "03",
           code: "000001",
+
+          number: "03000000",
           submenuItemsInColumn: {
             first: "17",
             second: "39",
@@ -796,10 +828,13 @@ class Navbar extends Component {
             },
           ],
         },
-
+        //********* */  "нiгтi"
         {
           title: "нiгтi",
           order: "04",
+          code: "000207",
+
+          number: "04000000",
           submenuItemsInColumn: {
             first: "1",
             second: "50",
@@ -809,228 +844,231 @@ class Navbar extends Component {
             sixth: "130",
           },
           subMenu: [
-            {
+            /*  {
               title: "#НІГТІ",
               code: "000171",
               number: "04010000",
               level: "2",
-            },
+            }, */
             {
               title: ".Лікувальні та укріплюючі засоби",
               code: "000172",
-              number: "04010100",
+              number: "04000100",
               level: "3",
             },
 
             {
               title: ".Догляд за кутикулою",
               code: "000173",
-              number: "04010200",
+              number: "04000200",
               level: "3",
             },
             {
               title: "-Засоби для видалення кутикули",
               code: "000174",
-              number: "04010201",
+              number: "04000201",
               level: "4",
             },
             {
               title: "-Засоби для змякчення кутикули",
               code: "000175",
-              number: "04010202",
+              number: "04000202",
               level: "4",
             },
             {
               title: ".Засоби для покриття нігтів лаком",
               code: "000176",
-              number: "04010300",
+              number: "04000300",
               level: "3",
             },
             {
               title: "-Знежирювачі",
               code: "000177",
-              number: "04010301",
+              number: "04000301",
               level: "4",
             },
             {
               title: "-Основи",
               code: "000178",
-              number: "04010302",
+              number: "04000302",
               level: "4",
             },
             {
               title: "-Лаки для нігтів",
               code: "000179",
-              number: "04010303",
+              number: "04000303",
               level: "4",
             },
             {
               title: "-Закріплювачі",
               code: "000180",
-              number: "04010304",
+              number: "04000304",
               level: "4",
             },
             {
               title: "-Прискорювачі сушіння",
               code: "000181",
-              number: "04010305",
+              number: "04000305",
               level: "4",
             },
             {
               title: "-Засоби для зняття лаку",
               code: "000182",
-              number: "04010306",
+              number: "04000306",
               level: "4",
             },
             {
               title: ".Нарощування і покриття нігтів гелем",
               code: "000183",
-              number: "04010400",
+              number: "04000400",
               level: "3",
             },
             {
               title: "-Лампи",
               code: "000184",
-              number: "04010401",
+              number: "04000401",
               level: "4",
             },
             {
               title: "-Гелі-архітектори",
               code: "000185",
-              number: "04010402",
+              number: "04000402",
               level: "4",
             },
             {
               title: "-Знежирювачі",
               code: "000186",
-              number: "04010403",
+              number: "04000403",
               level: "4",
             },
             {
               title: "-Підготовлювачі",
               code: "000187",
-              number: "04010404",
+              number: "04000404",
               level: "4",
             },
             {
               title: "-Праймери",
               code: "000188",
-              number: "04010405",
+              number: "04000405",
               level: "4",
             },
             {
               title: "-Бази",
               code: "000189",
-              number: "04010406",
+              number: "04000406",
               level: "4",
             },
             {
               title: "-Гель-лаки",
               code: "000190",
-              number: "04010407",
+              number: "04000407",
               level: "4",
             },
             {
               title: "-Топи",
               code: "000191",
-              number: "04010408",
+              number: "04000408",
               level: "4",
             },
             {
               title: "-Засоби для зняття липкого шару",
               code: "000192",
-              number: "04010409",
+              number: "04000409",
               level: "4",
             },
             {
               title: "-Засоби для зняття гель-лаку",
               code: "000193",
-              number: "04010410",
+              number: "04000410",
               level: "4",
             },
             {
               title: "-Стартові набори",
               code: "000194",
-              number: "04010411",
+              number: "04000411",
               level: "4",
             },
             {
               title: ".Інструменти для манікюру та педікюру",
               code: "000195",
-              number: "04010500",
+              number: "04000500",
               level: "3",
             },
             {
               title: "-Пилочки",
               code: "000196",
-              number: "04010501",
+              number: "04000501",
               level: "4",
             },
             {
               title: "-Кусачки",
               code: "000197",
-              number: "04010502",
+              number: "04000502",
               level: "4",
             },
             {
               title: "-Ножиці",
               code: "000198",
-              number: "04010503",
+              number: "04000503",
               level: "4",
             },
             {
               title: "-Кніпери",
               code: "000199",
-              number: "04010504",
+              number: "04000504",
               level: "4",
             },
             {
               title: "-Лопатки і кюретки",
               code: "000200",
-              number: "04010505",
+              number: "04000505",
               level: "4",
             },
             {
               title: "-Дерев'яні палички",
               code: "000201",
-              number: "04010506",
+              number: "04000506",
               level: "4",
             },
             {
               title: "-Терки та пемзи",
               code: "000202",
-              number: "04010507",
+              number: "04000507",
               level: "4",
             },
             {
               title: "-Щітки",
               code: "000203",
-              number: "04010508",
+              number: "04000508",
               level: "4",
             },
             {
               title: "-Набори інструментів",
               code: "000204",
-              number: "04010509",
+              number: "04000509",
               level: "4",
             },
             {
               title: "-Чохли для інструментів",
               code: "000205",
-              number: "04010510",
+              number: "04000510",
               level: "4",
             },
             {
               title: "-Аксесуари",
               code: "000206",
-              number: "04010511",
+              number: "04000511",
               level: "4",
             },
           ],
         },
+        //********* */  "догляд за шкiрою",
         {
           title: "догляд за шкiрою",
           order: "05",
+          code: "000209",
+          number: "05000000",
           submenuItemsInColumn: {
             first: "1",
             second: "17",
@@ -1428,15 +1466,17 @@ class Navbar extends Component {
             {
               title:
                 "https://firebasestorage.googleapis.com/v0/b/justclockit-a0fa1.appspot.com/o/kapris%2Fnavbar%2Fmakeupskin2.jpg?alt=media&token=f61c5107-651e-4902-8262-49261a0b847b",
-              code: "000000",
+              code: "99999993",
               number: "",
               level: "4",
             },
           ],
         },
+        //********* */  "чоловiкам",
         {
           title: "чоловiкам",
           order: "06",
+          number: "06000000",
           submenuItemsInColumn: {
             first: "15",
             second: "50",
@@ -1450,9 +1490,11 @@ class Navbar extends Component {
             { title: "-вiалки", number: "000000" },
           ],
         },
+        //********* */  "дiтям",
         {
           title: "дiтям",
           order: "07",
+          number: "07000000",
           submenuItemsInColumn: {
             first: "15",
             second: "50",
@@ -1466,9 +1508,11 @@ class Navbar extends Component {
             { title: "-вiалки", number: "000000" },
           ],
         },
+        //********* */  "аксесуари",
         {
           title: "аксесуари",
           order: "08",
+          number: "08000000",
           submenuItemsInColumn: {
             first: "15",
             second: "50",
@@ -1482,9 +1526,11 @@ class Navbar extends Component {
             { title: "-вiалки", number: "000000" },
           ],
         },
+        //********* */  "подарунки",
         {
           title: "подарунки",
           order: "09",
+          number: "09000000",
           submenuItemsInColumn: {
             first: "15",
             second: "50",
@@ -1783,9 +1829,9 @@ class Navbar extends Component {
   }
 
   /*  last
-      code: "000206",
-      number: "04010511",*/
-  /*
+      code: "000296",
+      number: "99999994",*/
+  /* 
   componentDidMount() {
     const { navbarMenuTest } = this.state;
     console.log(navbarMenuTest, "navbarMenuTest");
@@ -1795,8 +1841,7 @@ class Navbar extends Component {
         .doc()
         .set({ ...mainmenu });
     });
-  }
-*/
+  } */
 
   //const navbarFBaseRef = firestore.collection("navbarTest").get();
   //navbarFBaseRef.map((element) => console.log(element.data()));
@@ -1807,35 +1852,37 @@ class Navbar extends Component {
    */
   render() {
     // if (this.state.clearSubmenu === true) {
-    const navbarMenuTest2 = this.state.navbarMenuTest.map((el) =>
+    /* const navbarMenuTest2 = this.state.navbarMenuTest.map((el) =>
       el.subMenu.map((ell) => ell.title)
-    );
+    ); */
     //console.log(navbarMenuTest2, "navbarMenuTest2");
     return (
       <div>
         <nav>
           <div className="container1">
             <ul className="menu-main">
-              {/* 
-                <li className="menu-main-link">
-                  <a className="hover-border" href="">
-                    {"парфуми".toUpperCase()}
-                  </a>
-                  <Submenu navbarSubMenu={this.state.navbarMenu[0].subMenu} />
-                </li> */}
-
               {this.state.navbarMenuTest.map((element, index) => {
                 return (
                   <li className="menu-main-link" key={index}>
-                    {" "}
-                    <NavLink to="/" className="hover-border">
+                    <NavLink
+                      to={`/shop/${element.code}`}
+                      className="hover-border"
+                      onClick={() => {
+                        this.setState({ showSubmenu: false });
+                        setTimeout(
+                          () => this.setState({ showSubmenu: true }),
+                          5000
+                        );
+                      }}
+                    >
                       {element.title.toUpperCase()}
-                      {/* {element.title} */}
                     </NavLink>
-                    <Submenu
-                      navbarSubMenu={element.subMenu}
-                      submenuItemsInColumn={element.submenuItemsInColumn}
-                    />
+                    {this.state.showSubmenu && (
+                      <Submenu
+                        navbarSubMenu={element.subMenu}
+                        submenuItemsInColumn={element.submenuItemsInColumn}
+                      />
+                    )}
                   </li>
                 );
               })}
@@ -1901,4 +1948,4 @@ class Navbar extends Component {
   }
 }
 
-export default Navbar;
+export default withRouter(Navbar);

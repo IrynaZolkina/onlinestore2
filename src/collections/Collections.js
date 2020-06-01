@@ -11,7 +11,10 @@ class Collections extends Component {
       <div>
         {collectionsArray !== [] ? (
           <div>
-            collections
+            <div className="collections-title">
+              {" "}
+              Этот продукт включён в коллекции:
+            </div>
             <CollectionList
               collectionsArray={collectionsArray}
               arrayNavbar={arrayNavbar}
@@ -21,20 +24,26 @@ class Collections extends Component {
         ) : (
           <div> NO COLLECTIONS YET</div>
         )}
-        <button onClick={this.props.changeShowMenu}>ADD COLLECTION</button>
+        {/* {editMode === true && (
+          <button onClick={this.props.changeShowMenu}>ADD COLLECTION</button>
+        )} */}
         {this.props.showMenu && (
-          <SelectCollection
-            changeShowMenu={this.props.changeShowMenu}
-            id={this.props.id}
-            collectionsArray={collectionsArray}
-            arrayNavbar={this.props.arrayNavbar}
-            title={this.props.title}
-            brand={this.props.brand}
-            price={this.props.price}
-            discountPrice={this.props.discountPrice}
-            imageUrl1={this.props.imageUrl1}
-            imageUrl2={this.props.imageUrl2}
-          />
+          <div className="collection-navbar-wrapper">
+            <SelectCollection
+              changeShowMenu={this.props.changeShowMenu}
+              id={this.props.id}
+              collectionsArray={collectionsArray}
+              arrayNavbar={this.props.arrayNavbar}
+              title={this.props.title}
+              price={this.props.price}
+              discountPrice={this.props.discountPrice}
+              imageUrl1={this.props.imageUrl1}
+              imageUrl2={this.props.imageUrl2}
+              createdAt={this.props.createdAt}
+              novinka={this.props.novinka}
+              titleCode={this.props.titleCode}
+            />
+          </div>
         )}
       </div>
     );

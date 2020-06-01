@@ -1,7 +1,7 @@
 /**** Subenu component is called from Navbar */
 
 import React, { Component } from "react";
-import { NavLink, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import "./submenu.css";
 import SubmenuElement from "./SubmenuElement";
 
@@ -66,69 +66,70 @@ class Submenu extends Component {
 
     if (this.state.clearSubmenu === true) {
       return (
-        <div className="test47">
-          <div className="submenu-container2">
-            <div className="ttt">
-              <div
-                className="menu-sub"
-                onClick={() => {
-                  this.setState({ clearSubmenu: false });
-                  setTimeout(() => this.setState({ clearSubmenu: true }), 500);
-                }}
-              >
-                {/* /************ FIRST COLUMN************  */}
-                <div className="menu-col-1">
-                  {title1.map((element, index) => (
-                    <ul key={index} className="">
-                      <SubmenuElement element={element} index={index} />
-                    </ul>
-                  ))}
-                </div>
+        /*  <div className="test47"> */
+        <div className="submenu-container2">
+          <div className="ttt-cont">
+            <div className="ttt"></div>
+          </div>
+          <div
+            className="menu-sub"
+            onClick={() => {
+              this.setState({ clearSubmenu: false });
+              setTimeout(() => this.setState({ clearSubmenu: true }), 500);
+            }}
+          >
+            {/* /************ FIRST COLUMN************  */}
+            <div className="menu-col-1">
+              {title1.map((element, index) => (
+                <ul key={index} className="">
+                  <SubmenuElement element={element} index={index} />
+                </ul>
+              ))}
+            </div>
 
-                {/* /************ SECOND COLUMN************  */}
-                <div className="menu-col-2">
-                  {title2.map((element, index) => (
-                    <ul key={index} className="">
-                      <SubmenuElement element={element} index={index} />
-                    </ul>
-                  ))}
-                </div>
-                {/************ THIRD COLUMN************/}
-                <div className="menu-col-3">
-                  {title3.map((element, index) => (
-                    <ul key={index} className="">
-                      <SubmenuElement element={element} index={index} />
-                    </ul>
-                  ))}
-                </div>
-                {/* /************ FORTH COLUMN************  */}
-                <div className="menu-col-4">
-                  {title4.map((element, index) => (
-                    <ul key={index} className="">
-                      <SubmenuElement element={element} index={index} />
-                    </ul>
-                  ))}
-                </div>
-                {/* /************ 5-TH COLUMN************  */}
-                <div className="menu-col-5">
-                  {title5.map((element, index) => (
-                    <ul key={index} className="">
-                      <SubmenuElement element={element} index={index} />
-                    </ul>
-                  ))}
-                </div>
-                {/* /************ 6-TH COLUMN************  */}
-                <div className="menu-col-6">
-                  {title6.map((element, index) => (
-                    <ul key={index} className="">
-                      <SubmenuElement element={element} index={index} />
-                    </ul>
-                  ))}
-                </div>
-              </div>
+            {/* /************ SECOND COLUMN************  */}
+            <div className="menu-col-2">
+              {title2.map((element, index) => (
+                <ul key={index} className="">
+                  <SubmenuElement element={element} index={index} />
+                </ul>
+              ))}
+            </div>
+            {/************ THIRD COLUMN************/}
+            <div className="menu-col-3">
+              {title3.map((element, index) => (
+                <ul key={index} className="">
+                  <SubmenuElement element={element} index={index} />
+                </ul>
+              ))}
+            </div>
+            {/* /************ FORTH COLUMN************  */}
+            <div className="menu-col-4">
+              {title4.map((element, index) => (
+                <ul key={index} className="">
+                  <SubmenuElement element={element} index={index} />
+                </ul>
+              ))}
+            </div>
+            {/* /************ 5-TH COLUMN************  */}
+            <div className="menu-col-5">
+              {title5.map((element, index) => (
+                <ul key={index} className="">
+                  <SubmenuElement element={element} index={index} />
+                </ul>
+              ))}
+            </div>
+            {/* /************ 6-TH COLUMN************  */}
+            <div className="menu-col-6">
+              {title6.map((element, index) => (
+                <ul key={index} className="">
+                  <SubmenuElement element={element} index={index} />
+                </ul>
+              ))}
             </div>
           </div>
         </div>
+        /*   </div> */
       );
     } else {
       return null;

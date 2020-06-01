@@ -11,7 +11,6 @@ class SelectSubmenu extends Component {
     if (this.state.showSubmenu === true) {
       return (
         <div
-          className="menu-sub"
           onClick={() => {
             this.setState({ showSubmenu: false });
             this.props.changeShowMenu();
@@ -19,9 +18,10 @@ class SelectSubmenu extends Component {
           }}
         >
           {submenu.map((element, index) => (
-            //console.log(element, " element"),
+            /*  console.log(element.title.substring(0, 1), " element"), */
             <div key={index}>
-              <h4
+              <div
+                className="collection-submenu-element"
                 onClick={() => {
                   this.props.addItemIntoCollections(
                     element.code,
@@ -35,8 +35,20 @@ class SelectSubmenu extends Component {
                       ); */
                 }}
               >
-                {element.title}
-              </h4>
+                <div
+                  className={`${
+                    element.title.substring(0, 1) === "#"
+                      ? "submenu-up"
+                      : element.title.substring(0, 1) === "."
+                      ? "submenu-middle"
+                      : element.title.substring(0, 1) === "-"
+                      ? "submenu-down"
+                      : "submenu-html"
+                  } collection-submenu-string`}
+                >
+                  {element.title.substring(1)}
+                </div>
+              </div>
             </div>
           ))}
         </div>

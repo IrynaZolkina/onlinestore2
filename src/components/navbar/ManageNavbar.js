@@ -20,7 +20,7 @@ const ManageNavbar = () => {
           const uploadTask = firebase
             .storage()
             .ref()
-            .child("/kapris/navbar/makeup" + e.target.files[0].name)
+            .child("/kapris/navbar/makeup/" + e.target.files[0].name)
             /*.child("/kapris/kapris/" + e.target.files[0].name)*/
             /*.child("/kapris/top-sales/" + e.target.files[0].name)*/
             /*.child("/kapris/homepage/" + e.target.files[0].name)*/

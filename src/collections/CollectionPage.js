@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 
 import { selectCollection } from "../redux/shop/shopSelectors";
-import CollectionItem from "../components/collection-item/CollectionItem";
-import { NavLink } from "react-router-dom";
+
+import { withRouter, Redirect } from "react-router-dom";
 import { firestore } from "../firebase/FirebaseUtils";
-import All from "../pages/new-product-page/All";
+import All from "../components/product/All";
 
 //const CollectionPage = ({ match }) => {
 class CollectionPage extends Component {
@@ -13,12 +13,12 @@ class CollectionPage extends Component {
     collection: [],
   };
 
-  componentDidMount = () => {
+  componentDidMount = async () => {
     console.log("componentDidMount", this.state);
     const { match } = this.props;
     const collectionId = match.params.collectionId;
 
-    const doc = firestore
+    firestore
       .collection("collection-description")
       .doc(collectionId)
       .get()
@@ -56,6 +56,7 @@ class CollectionPage extends Component {
         console.log("Error getting document:", error);
       });
   };
+
   render() {
     const { collection } = this.state;
     //console.log(collection, "collection");
@@ -71,7 +72,8 @@ class CollectionPage extends Component {
         <h1>
           {this.state.name !== "" ? this.state.name : "COLLECTION IS EMPTY"}{" "}
         </h1>
-        <NavLink to={`/all/${collectionId}`}>{tt}</NavLink>
+        {/*  <All id={collectionId} /> */}
+        <Redirect to={`/all/${collectionId}`}>{tt}</Redirect>
         {/*  <NavLink to={`col/${tt}`}>{tt}</NavLink> */}
         {/* <div className="collection-container">
           <All />
@@ -86,26 +88,4 @@ class CollectionPage extends Component {
   }
 }
 
-export default CollectionPage;
-
-/* const CollectionPage = ({ collection }) => {
-  console.log("this is CollectionPage");
-  const { title, items } = collection;
-  return (
-    <div className="collection-page">
-      <h2 className="title">{title}</h2>
-
-      <div className="items">
-        {items.map((item) => (
-          <CollectionItem key={item.id} item={item} />
-        ))}
-      </div>
-    </div>
-  );
-};
-const mapStateToProps = (state, ownProps) => ({
-  collection: selectCollection(ownProps.match.params.collectionId)(state),
-});
-
-export default connect(mapStateToProps)(CollectionPage);
- */
+export default withRouter(CollectionPage);

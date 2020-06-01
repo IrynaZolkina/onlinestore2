@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { firestore } from "../firebase/FirebaseUtils";
-import FormInput from "../components/form-input/FormInput";
+//import FormInput from "../utilities/form-input/FormInput";
 
 class EditFields extends Component {
   state = {
@@ -14,8 +14,8 @@ class EditFields extends Component {
       .doc(this.props.id)
       .get()
       .then((doc) => {
-        this.state.reserveItem = doc.data();
-        this.state.item = doc.data();
+        this.setState({ reserveItem: doc.data() });
+        this.setState({ item: doc.data() });
       });
     this.setState({ title: this.props.item.title });
   };
@@ -42,25 +42,6 @@ class EditFields extends Component {
     console.log("xxxxxxxxxxxxxxxxxxxxxxxxx", this.state.title);
     //var { id, title } = this.props;
     const { id } = this.props;
-
-    const {
-      //title,
-      price,
-      discountPrice,
-      brand,
-      collectionsArray,
-      imageUrl1,
-      imageUrl2,
-      imageUrl3,
-      imageUrl4,
-      imageUrl5,
-      imageUrl6,
-      imageUrl7,
-      file,
-    } = this.props.item;
-    //console.log("............this.props..........", this.props);
-    //console.log("............this.props.item.....", this.props.item);
-    //console.log("............title1.....", title);
 
     return (
       <div>

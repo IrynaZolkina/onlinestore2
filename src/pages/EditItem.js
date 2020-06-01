@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import Product from "./new-product-page/Product";
+import Product from "../components/product/Product";
 
 class EditItem extends Component {
   render() {

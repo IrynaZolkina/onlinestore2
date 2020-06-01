@@ -305,6 +305,7 @@ class Slider3in8 extends Component {
       return (
         <div className="grey-fon">
           <div className="container-slider-topsales">
+            <div className="title-slider-8">{this.props.sliderName}</div>
             <div className="slider-top">
               <div className="figure">
                 <div className="background-image-sl-top">

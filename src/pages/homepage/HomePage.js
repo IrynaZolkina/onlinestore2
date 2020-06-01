@@ -8,7 +8,7 @@ const HomePage = () => {
   return (
     <div className="homepage1">
       <Slider />
-      <Slider3in8 />
+      <Slider3in8 sliderName={"топ продажу".toUpperCase()} />
       <Directory number={1} directoryName={"ДЛЯ ЖіНок".toUpperCase()} />
       <Directory number={2} directoryName={"для чоловіків".toUpperCase()} />
     </div>

@@ -5,7 +5,7 @@ import { createStructuredSelector } from "reselect";
 import { selectCurrentUser } from "../redux/user/userSelector";
 import EditItem from "./EditItem";
 import { NavLink } from "react-router-dom";
-import TestPage from "./TestPage";
+import TestPage from "../components/product/TestPage";
 
 class SingleItemPage extends Component {
   state = {};

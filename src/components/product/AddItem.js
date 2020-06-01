@@ -9,7 +9,9 @@ class AddItem extends Component {
       title: "",
       price: "",
       discountPrice: "",
-      brand: "",
+      //brand: "",
+      titleCode: "",
+      codeTovara: "",
       shortDescription: "",
       description: "",
       collectionsArray: [],
@@ -20,7 +22,8 @@ class AddItem extends Component {
       imageUrl5: "",
       imageUrl6: "",
       imageUrl7: "",
-      file: "",
+      novinka: false,
+
       createdAt: new Date(),
     },
     timeId: "",
@@ -94,7 +97,7 @@ class AddItem extends Component {
   render() {
     return (
       <div>
-        <h1>This is AddItem COMPONENT</h1>
+        {/* <h1>This is AddItem COMPONENT</h1> */}
         {this.state.timeId !== "" && <Product id={this.state.timeId} />}
       </div>
     );

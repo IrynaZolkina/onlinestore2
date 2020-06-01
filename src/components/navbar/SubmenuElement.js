@@ -1,11 +1,11 @@
 import React from "react";
-import { NavLink, withRouter } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const SubmenuElement = ({ element, index }) => {
   if (element.title.search("#") === 0) {
     return (
       <div className="title-category" key={index}>
-        <NavLink to={`/shop/${element.number}`}>
+        <NavLink to={`/shop/${element.code}`}>
           {element.title.slice(1).toUpperCase()}
         </NavLink>
       </div>
@@ -21,7 +21,7 @@ const SubmenuElement = ({ element, index }) => {
       if (element.title.substring(0, 1) === ".") {
         return (
           <li className="text-submenu" key={index}>
-            <NavLink to={`/shop/${element.number}`}>
+            <NavLink to={`/shop/${element.code}`}>
               {element.title.slice(1)}
             </NavLink>
           </li>
@@ -30,7 +30,7 @@ const SubmenuElement = ({ element, index }) => {
         if (element.title.substring(0, 1) === "-") {
           return (
             <div className="text-sub-sub-menu" key={index}>
-              <NavLink to={`/shop/${element.number}`}>{element.title}</NavLink>
+              <NavLink to={`/shop/${element.code}`}>{element.title}</NavLink>
             </div>
           );
         } else {
