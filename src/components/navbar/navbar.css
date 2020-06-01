@@ -166,11 +166,13 @@ nav li:hover .menu-sub {
 .menu-sub .text-submenu a {
   /*color: green;*/
   text-align: left;
+  /* text-decoration: underline; */
+  border-bottom: 1px dotted gray;
 }
 
 .menu-sub li {
   display: block;
-  text-align: center;
+  /* text-align: center; */
 
   line-height: 0.8rem;
   padding-top: 1%;
@@ -182,7 +184,7 @@ nav li:hover .menu-sub {
 .menu-sub .text-sub-sub-menu a {
   color: rgb(41, 41, 179);
   text-align: left;
-  margin-left: 2%;
+  /* margin-left: 2%; */
   line-height: 0.7rem;
   font-size: 0.8rem;
 }
@@ -283,10 +285,12 @@ nav li:hover .menu-sub {
   transform: scaleX(1);
 } */
 /**********************************/
-.menu-sub .title-category a {
+.title-category a {
   color: rgba(129, 14, 14, 0.952);
   font-size: 0.8rem;
   font-weight: bold;
+  text-align: left;
+  border-bottom: 1px solid gray;
   /*padding-bottom: 10px;*/
   padding-top: 10px;
   letter-spacing: 0.1rem;

@@ -30,7 +30,9 @@ const SubmenuElement = ({ element, index }) => {
         if (element.title.substring(0, 1) === "-") {
           return (
             <div className="text-sub-sub-menu" key={index}>
-              <NavLink to={`/shop/${element.code}`}>{element.title}</NavLink>
+              <NavLink to={`/shop/${element.code}`}>
+                {element.title.substring(1)}
+              </NavLink>
             </div>
           );
         } else {
